@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get("/", { :controller => "application", :action => "index" })
 
   get("/user_sign_up", {:controller => "application", :action => "sign_up"})
@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   get("/users", {:controller => "application", :action => "index"})
 
   get("/users/:the_username", {:controller => "application", :action => "show"})
+
+  get("/update_user/:the_user_id", {:controller => "application", :action => "update" })
+
+  get("/delete_user/:the_user_id", {:controller => "application", :action => "destroy"})
 
 
   # ======= Add Your Routes Above These =============

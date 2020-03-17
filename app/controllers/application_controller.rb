@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    def index 
+  def index 
     render({ :template => "users/all_users.html.erb"})
   end
 
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
       if user.authenticate(pw)
         session.store(:user_id, user.id)
         
-        redirect_to("/", {:notice => "Welcome back " + user.username + "!" })
+        redirect_to("/users/#{user.username}", {:notice => "Welcome back " + user.username + "!" })
       else
       redirect_to("/user_sign_in", {:alert => "Nope"})
       end
@@ -60,5 +60,28 @@ class ApplicationController < ActionController::Base
     @user = User.where({ :username => the_username }).at(0)
 
     render({ :template => "users/show.html.erb" })
+  end
+
+  def update
+    the_id = params.fetch("the_user_id")
+    user = User.where({ :id => the_id }).at(0)
+
+
+    user.username = params.fetch("input_username")
+
+    user.save
+    
+    redirect_to("/users/#{user.username}", { :notice => "Username updated to: " + user.username + "!" })
+  end
+
+  def destroy
+    the_id = params.fetch("the_user_id")
+    user = User.where({ :id => the_id }).at(0)
+
+    user.destroy
+
+    reset_session
+
+    redirect_to("/users", { :notice => "Username: *" + user.username + "* has been deleted!" })
   end
 end

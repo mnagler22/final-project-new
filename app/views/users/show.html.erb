@@ -1,1 +1,25 @@
-<h1>hi</h1>
+
+<h1><%= @user.username %></h1>
+
+<dl>
+  <dt>ID</dt>
+  <dd><%= @user.id %></dd>
+
+  <dt>Edit user</dt>
+  <dd>
+    <form action="/update_user/<%= @user.id %>" >
+      <label for="browser_username">Username</label>
+      <input id="browser_username" type="text" name="input_username" placeholder="Enter a username..." value="<%= @user.username %>">
+
+      <button>Update user</button>
+    </form>
+  </dd>
+
+  <dt>Delete Account</dt>
+  <dd>
+    <a href="/delete_user/<%= @user.id %>;">
+      Delete this account
+    </a>
+  </dd>
+</dl>
+
