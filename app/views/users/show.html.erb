@@ -19,22 +19,34 @@
     <th>
       Grade
     </th>
+
+    <th></th>
   </tr>
 
-  <% %>
+  <% @user.own_courses.each do |course| %>
   <tr>
     <td>
-      <%=  %>
+      <%= course.course_name %>
     </td>
 
     <td>
-      <%= %>
+      <%= course.course_code %>
     </td>
 
     <td>
-      <%= %>
+      <%= course.requirement %>
+    </td>
+    <td>
+      <%= course.grade %>
+    </td>
+
+    <td>
+      <a href="/courses/<%= course.id %>">
+        Show details
+      </a>
     </td>
   </tr>
+  <% end %>
 </table>
 
 <em>
@@ -61,4 +73,3 @@
     </a>
   </dd>
 </dl>
-

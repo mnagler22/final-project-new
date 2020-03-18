@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
   get("/users/:the_username", {:controller => "application", :action => "show"})
 
+  get("/my_page", {:controller => "application", :action => "my_page"})
+
+  get("/login_confirmation", {:controller => "application", :action => "login_confirmation"})
+
   get("/update_user/:the_user_id", {:controller => "application", :action => "update" })
 
   get("/delete_user/:the_user_id", {:controller => "application", :action => "destroy"})
@@ -29,6 +33,12 @@ Rails.application.routes.draw do
   get("/insert_course_record", {:controller => "application", :action => "add_course"})
 
   get("/new_course", {:controller => "application", :action => "new_course_form"})
+
+  #get("/edit_course", {:controller => "application", :action => "edit_course_form"})
+
+  get("/update_course/:the_course_id", {:controller => "application", :action => "update_course" })
+
+  get("/delete_course/:the_course_id", {:controller => "application", :action => "destroy_course"})
 
 
 

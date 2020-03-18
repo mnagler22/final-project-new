@@ -5,7 +5,7 @@
 #  id          :integer          not null, primary key
 #  course_code :integer
 #  course_name :string
-#  grade       :integer
+#  grade       :float
 #  requirement :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

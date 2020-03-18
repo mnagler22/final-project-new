@@ -20,4 +20,8 @@ class User < ApplicationRecord
   )
   
   has_secure_password
+
+  def own_courses
+    return Course.where({ :owner_id => self.id })
+  end
 end

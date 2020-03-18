@@ -1,0 +1,50 @@
+<h1>My Courses</h1>
+
+<table border="1">
+  <tr>
+    <th>
+      Course Name
+    </th>
+
+    <th>
+      Course Code
+    </th>
+
+    <th>
+      Requirement
+    </th>
+
+    <th>
+      Grade
+    </th>
+
+    <th></th>
+  </tr>
+
+  <% @courses.each do |course| %>
+  <tr>
+    <td>
+      <%= course.course_name %>
+    </td>
+
+    <td>
+      <%= course.course_code %>
+    </td>
+
+    <td>
+      <%= course.requirement %>
+    </td>
+
+    <td>
+      <%= course.grade %>
+    </td>
+    
+    <td>
+      <a href="/courses/<%= course.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  
+  <% end %>
+</table>

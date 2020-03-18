@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_17_215019) do
+ActiveRecord::Schema.define(version: 2020_03_18_034149) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 2020_03_17_215019) do
     t.string "course_name"
     t.integer "course_code"
     t.string "requirement"
-    t.integer "grade"
     t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "grade"
   end
 
   create_table "users", force: :cascade do |t|

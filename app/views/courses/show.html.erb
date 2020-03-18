@@ -27,3 +27,36 @@
     </dd>
 </dl>
 
+<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+<h3>Edit Course Information</h3>
+<form action="/update_course/<%= @course.id %>">
+  <label for="browser_name">Course Name:</label>
+  <input id="browser_name" type="text" name="input_course_name" placeholder="Enter the course name!" value="<%= @course.course_name %>">
+
+  <label for="browser_code">Course Code:</label>
+  <input id="browser_code" type="text" name="input_course_code" placeholder="Enter the course code!" value="<%= @course.course_code %>">
+  
+  <label for="browser_requirement">Requirement:</label>
+  <input id="browser_requirement" type="text" name="input_course_requirement" placeholder="Major, Core, Elective, ect" value="<%= @course.requirement %>">
+
+  <label for="browser_grade">Grade:</label>
+  <input id="browser_grade" type="password" name="input_course_grade" placeholder="Use 4.0 format, e.g. 3.7" value="<%= @course.grade %>">
+
+
+  <button>Update course!</button>
+</form>
+
+  <h3>Delete Course Information</h3>
+  <dd>
+    <a href="/delete_course/<%= @course.course_name %>;">
+      Click here to delete course
+    </a>
+  </dd>
+</dl>

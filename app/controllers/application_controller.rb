@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   def index 
+    @users = User.all
     render({ :template => "users/all_users.html.erb"})
   end
 
@@ -60,7 +61,6 @@ class ApplicationController < ActionController::Base
   def show
     the_username = params.fetch("the_username")
     @user = User.where({ :username => the_username }).at(0)
-    #session[:current_the_username] = @user.username
 
     render({ :template => "users/show.html.erb" })
   end
@@ -88,9 +88,18 @@ class ApplicationController < ActionController::Base
     redirect_to("/users", { :notice => "Username: *" + user.username + "* has been deleted!" })
   end
 
+  def login_confirmation
+    render({ :template => "users/login_confirmation.html.erb"})
+  end
+
+  def my_page
+    render({ :template => "users/my_page.html.erb" })
+  end
+
   #course fcns
 
   def course_index
+    @users = User.all
     render({ :template => "courses/index.html.erb"})
   end
 
@@ -105,7 +114,7 @@ class ApplicationController < ActionController::Base
     course_name = params.fetch("input_course_name")
     course_code = params.fetch("input_course_code")
     course_requirement = params.fetch("input_course_requirement")
-    course_grade = params.fetch("input_course_grade").to_f
+    course_grade = params.fetch("input_course_grade")
   
     course = Course.new
     course.owner_id = user_id
@@ -123,4 +132,35 @@ class ApplicationController < ActionController::Base
 
     render({ :template => "courses/show.html.erb" })
   end
+
+  #def edit_course_form
+
+   # render({ :template => "courses/edit_form.html.erb"})
+ # end
+
+  def update_course
+    the_course_id = params.fetch("the_course_id")
+    course = Course.where({ :id => the_course_id }).at(0)
+
+    course.course_name = course_name
+    course.course_code = course_code
+    course.requirement = course_requirement
+    course.grade = course_grade
+
+    course.save
+    
+    redirect_to("/courses/#{course.id}", { :notice => "Course information has been updated!" })
+ end
+
+ def destroy_course
+    the_course_id = params.fetch("the_course_id")
+    course = Course.where({ :id => the_course_id }).at(0)
+
+    course.destroy
+
+    reset_session
+
+    redirect_to("/users", { :notice => "Course has been deleted" })
+ end
+
 end
