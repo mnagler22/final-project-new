@@ -20,6 +20,17 @@ Rails.application.routes.draw do
 
   get("/delete_user/:the_user_id", {:controller => "application", :action => "destroy"})
 
+  #course routes
+
+  get("/courses", {:controller => "application", :action => "course_index"})
+
+  get("/courses/:the_course", {:controller => "application", :action => "course_show"})
+
+  get("/insert_course_record", {:controller => "application", :action => "add_course"})
+
+  get("/new_course", {:controller => "application", :action => "new_course_form"})
+
+
 
   # ======= Add Your Routes Above These =============
   devise_for :admin_users, ActiveAdmin::Devise.config

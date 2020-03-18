@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
     else
       if user.authenticate(pw)
         session.store(:user_id, user.id)
+        session.store(:user_username, user.username)
         
         redirect_to("/users/#{user.username}", {:notice => "Welcome back " + user.username + "!" })
       else
@@ -48,6 +49,7 @@ class ApplicationController < ActionController::Base
 
     if save_status == true
       session.store( :user_id, user.id)
+      session.store( :user_username, user.username)
 
       redirect_to("/users/#{user.username}", { :notice => "Welcome, " + user.username + "!" })
     else
@@ -58,6 +60,7 @@ class ApplicationController < ActionController::Base
   def show
     the_username = params.fetch("the_username")
     @user = User.where({ :username => the_username }).at(0)
+    #session[:current_the_username] = @user.username
 
     render({ :template => "users/show.html.erb" })
   end
@@ -83,5 +86,41 @@ class ApplicationController < ActionController::Base
     reset_session
 
     redirect_to("/users", { :notice => "Username: *" + user.username + "* has been deleted!" })
+  end
+
+  #course fcns
+
+  def course_index
+    render({ :template => "courses/index.html.erb"})
+  end
+
+
+  def new_course_form
+    render({ :template => "courses/new_course.html.erb"})
+  end
+
+  def add_course
+    user_id = session.fetch(:user_id)
+
+    course_name = params.fetch("input_course_name")
+    course_code = params.fetch("input_course_code")
+    course_requirement = params.fetch("input_course_requirement")
+    course_grade = params.fetch("input_course_grade").to_f
+  
+    course = Course.new
+    course.owner_id = user_id
+    course.course_name = course_name
+    course.course_code = course_code
+    course.requirement = course_requirement
+    course.grade = course_grade
+    course.save
+    redirect_to("/courses/#{course.id}")
+  end
+
+  def course_show
+    course_id = params.fetch("the_course")
+    @course = Course.where({ :id => course_id }).first
+
+    render({ :template => "courses/show.html.erb" })
   end
 end

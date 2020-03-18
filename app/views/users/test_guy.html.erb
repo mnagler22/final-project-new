@@ -1,0 +1,25 @@
+<h1>Hi! I'm Test Guy</h1>
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/WelshCorgi.jpeg" alt="This is me!" width="250" height="290">
+<h5>Put mischellaneous code under me :)</h5>
+
+
+  <dt>Edit course</dt>
+  <dd>
+    <form action="/update_course/<%=  course.id %>">
+      <label for="browser_image">Image</label>
+      <input id="browser_image" type="text" name="input_image" placeholder="Enter a URL for the image..." value="<%=  course.image %>">
+
+      <label for="browser_caption">Caption</label>
+      <textarea id="browser_caption" name="input_caption" placeholder="Enter a caption for the course..."><%=  course.caption %></textarea>
+
+      <button>Update course</button>
+    </form>
+  </dd>
+
+  <dt>Delete course</dt>
+  <dd>
+    <a href="/delete course/<%=  course.id %>;">
+      Delete this course
+    </a>
+  </dd>
+</dl>
