@@ -55,8 +55,16 @@ function goBack() {
 
   <h3>Delete Course Information</h3>
   <dd>
-    <a href="/delete_course/<%= @course.course_name %>;">
+    <a href="/delete_course/<%= @course.id %>;">
       Click here to delete course
+    </a>
+  </dd>
+
+
+  <h3>Add Another Course</h3>
+  <dd>
+    <a href="/new_course">
+      Click here to add another course
     </a>
   </dd>
 </dl>

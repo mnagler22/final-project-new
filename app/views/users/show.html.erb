@@ -1,5 +1,5 @@
 
-<h1><%= @user.username %></h1>
+<h1><%= @user.username.capitalize %></h1>
 
 
 <table border="1">
@@ -49,10 +49,19 @@
   <% end %>
 </table>
 
-<em>
-<a href="/new_course">Add a Course!</a>
-</em>
 <dl>
+  <dt><b>Cumlative GPA: </b><%= @user.own_courses.average(:grade).to_s.to_f.round(4) %></dt> 
+</dl>
+
+<dl>
+  <dt><em>
+    <a href="/new_course">Add a Course!</a>
+  </dt></em>
+</dl>
+
+<dl>
+  <b>Profile</b>
+
   <dt>ID</dt>
   <dd><%= @user.id %></dd>
 

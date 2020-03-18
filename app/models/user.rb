@@ -24,4 +24,11 @@ class User < ApplicationRecord
   def own_courses
     return Course.where({ :owner_id => self.id })
   end
+
+  def own_grades
+    own_courses = Course.where({ :owner_id => self.id })
+    c = own_courses.collect(:grade)
+    #a = c.to_s.to_f
+    return c
+  end
 end

@@ -5,3 +5,15 @@
 
 <h3>Put mischellaneous code under me :)</h3>
 <!-- here goes the codeeeeee -->
+
+<dt><em>GPA: </em><%= Course.average :grade %></dt> 
+
+GPA: <%= @user.own_courses.pluck(:grade)%>
+
+each do |course|
+
+course.grade.to_s.to_f
+
+do |course| %></dt>
+    <dd> <%= course.grade.to_s.to_f %> </dd>
+     <% end %>

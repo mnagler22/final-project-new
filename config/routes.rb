@@ -36,9 +36,9 @@ Rails.application.routes.draw do
 
   #get("/edit_course", {:controller => "application", :action => "edit_course_form"})
 
-  get("/update_course/:the_course_id", {:controller => "application", :action => "update_course" })
+  get("/update_course/:the_course_id", {:controller => "application", :action => "update_course_dos" })
 
-  get("/delete_course/:the_course_id", {:controller => "application", :action => "destroy_course"})
+  get("/delete_course/:the_course_id", {:controller => "application", :action => "destroy_course_dos"})
 
 
 

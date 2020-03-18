@@ -138,29 +138,28 @@ class ApplicationController < ActionController::Base
    # render({ :template => "courses/edit_form.html.erb"})
  # end
 
-  def update_course
-    the_course_id = params.fetch("the_course_id")
-    course = Course.where({ :id => the_course_id }).at(0)
+  
 
-    course.course_name = course_name
-    course.course_code = course_code
-    course.requirement = course_requirement
-    course.grade = course_grade
-
+ def update_course_dos
+    c_id = params.fetch("the_course_id")
+    course = Course.where({ :id => c_id }).at(0)
+    course.course_name = params.fetch("input_course_name")
+    course.course_code = params.fetch("input_course_code")
+    course.requirement = params.fetch("input_course_requirement")
+    course.grade = params.fetch("input_course_grade")
     course.save
-    
-    redirect_to("/courses/#{course.id}", { :notice => "Course information has been updated!" })
+
+    redirect_to("/courses/#{course.id}")
  end
 
- def destroy_course
-    the_course_id = params.fetch("the_course_id")
-    course = Course.where({ :id => the_course_id }).at(0)
 
+ def destroy_course_dos
+    c_id = params.fetch("the_course_id")
+    course = Course.where({ :id => c_id }).at(0)
     course.destroy
 
-    reset_session
-
-    redirect_to("/users", { :notice => "Course has been deleted" })
+    redirect_to("/users", { :notice => "Course has been deleted!" })
+    
  end
 
 end
