@@ -1,3 +1,13 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/user_sign_in">Sign in!</a></li>
+    <li class="breadcrumb-item active" aria-current="page">My Page</li>
+    <li class="breadcrumb-item"><a href="/user_sign_out">Sign Out!</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= session.fetch( :user_username) %></li>
+  </ol>
+</nav>
+
 <h1>Please confirm user</h1>
 
 <form action="/verify_guy" method="post">
@@ -7,5 +17,5 @@
   <label for="browser_password">Password</label>
   <input id="browser_password" type="password" name="input_password" placeholder="Enter your password...">
 
-  <button>Sign in!</button>
+  <button type="submit" class="btn btn-primary">Confirm</button>
 </form>

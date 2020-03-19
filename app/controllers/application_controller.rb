@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def sign_out
     reset_session
 
-    redirect_to("/", { :notice => "See ya later!"})
+    redirect_to("/", { :notice => "Come back soon!"})
   end
 
   def sign_in
@@ -73,6 +73,8 @@ class ApplicationController < ActionController::Base
     user.username = params.fetch("input_username")
 
     user.save
+
+    reset_session
     
     redirect_to("/users/#{user.username}", { :notice => "Username updated to: " + user.username + "!" })
   end
@@ -96,7 +98,7 @@ class ApplicationController < ActionController::Base
     render({ :template => "users/my_page.html.erb" })
   end
 
-  #course fcns
+#course fcns
 
   def course_index
     @users = User.all
@@ -133,11 +135,6 @@ class ApplicationController < ActionController::Base
     render({ :template => "courses/show.html.erb" })
   end
 
-  #def edit_course_form
-
-   # render({ :template => "courses/edit_form.html.erb"})
- # end
-
   
 
  def update_course_dos
@@ -160,6 +157,14 @@ class ApplicationController < ActionController::Base
 
     redirect_to("/users", { :notice => "Course has been deleted!" })
     
+ end
+
+ def learn_more
+  render({ :template => "users/learn_more.html.erb" })
+ end
+
+ def test
+  render({ :template => "users/test_guy.html.erb" })
  end
 
 end

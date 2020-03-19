@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <head>
     <title>FinalProject</title>
     <%= csrf_meta_tags %>
-      <ul>
+      <!--<ul>
         <li>
           <a href="/">Home</a>
         </li>
@@ -17,7 +18,7 @@
           <%= session.fetch( :user_username) %>
         </li>
 
-      </ul>
+      </ul> -->
 
     <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
     <meta charset="utf-8">
@@ -32,13 +33,13 @@
 
   <body>
     <% if notice.present? %>
-      <div style="border: thin green solid; color:green">
+      <div class="alert alert-success" role="alert">
         <%= notice %>
       </div>
     <% end %>
 
     <% if alert.present? %>
-      <div style="border: thin red solid; color:red">
+      <div class="alert alert-danger" role="alert">
         <%= alert %>
       </div>
     <% end %>

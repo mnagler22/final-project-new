@@ -1,3 +1,12 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/user_sign_in">Sign in!</a></li>
+    <li class="breadcrumb-item active" aria-current="page">My Page</li>
+    <li class="breadcrumb-item"><a href="/user_sign_out">Sign Out!</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= session.fetch( :user_username) %></li>
+  </ol>
+</nav>
 <h1>My Courses</h1>
 
 <table border="1">

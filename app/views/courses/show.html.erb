@@ -1,3 +1,13 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/user_sign_in">Sign in!</a></li>
+    <li class="breadcrumb-item"><a href="/login_confirmation">My Page</a></li>
+    <li class="breadcrumb-item"><a href="/user_sign_out">Sign Out!</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= session.fetch( :user_username) %></li>
+  </ol>
+</nav>
+
 <h1>Course Details</h1>
 
 <dl>
@@ -50,14 +60,14 @@ function goBack() {
   <input id="browser_grade" type="password" name="input_course_grade" placeholder="Use 4.0 format, e.g. 3.7" value="<%= @course.grade %>">
 
 
-  <button>Update course!</button>
+  <button <button type="submit" class="btn btn-primary">Update course!</button>
 </form>
 
   <h3>Delete Course Information</h3>
   <dd>
-    <a href="/delete_course/<%= @course.id %>;">
-      Click here to delete course
-    </a>
+    <form action="/delete_course/<%= @course.id %>;">
+      <input type="submit" class="btn btn-danger" value="Delete" />
+    </form>
   </dd>
 
 

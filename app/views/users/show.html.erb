@@ -1,3 +1,12 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/user_sign_in">Sign in!</a></li>
+    <li class="breadcrumb-item"><a href="/login_confirmation">My Page</a></li>
+    <li class="breadcrumb-item"><a href="/user_sign_out">Sign Out!</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= session.fetch( :user_username) %></li>
+  </ol>
+</nav>
 
 <h1><%= @user.username.capitalize %></h1>
 
@@ -77,8 +86,6 @@
 
   <dt>Delete Account</dt>
   <dd>
-    <a href="/delete_user/<%= @user.id %>;">
-      Delete this account
-    </a>
-  </dd>
-</dl>
+    <form action="/delete_user/<%= @user.id %>;">
+      <input type="submit" class="btn btn-danger" value="Delete" />
+    </form>

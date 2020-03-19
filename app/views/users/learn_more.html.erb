@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">GPA Pal</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="/">Home</a>
+      <a class="nav-item nav-link" href="/user_sign_in">Sign in!</a>
+      <a class="nav-item nav-link" href="/user_sign_out">Sign out!</a>
+      <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><%= session.fetch( :user_username) %></a>
+    </div>
+  </div>
+</nav>
+
+<main role="main" class="container">
+
+  <div class="starter-template">
+    <h1>About Us</h1>
+    <p class="lead">This website is dedicated to helping students manage their completed coursework and calculate their GPAs. Students can test how grades in new classes will effect their GPA, in addition to viewing all their completed classes. Likewise, students can view how many classes they have completed in any of their requirements.</p>
+  </div>
+
+  <div class="starter-template">
+    <h1>About the Designer</h1>
+    <p class="lead">Matthew Nagler is currently a second year at the University of Chicago. At the university he is a double major in History (Concentration in Ancient Empires) and in Economics (Specialization in Business). At the university he is also a member of the varsity football team. Matt enjoys working out, hiking, and playing with his two fluffy dogs. </p>
+    <center><img src="" alt="Matthew Nagler"></center>
+  </div>
+
+</main>

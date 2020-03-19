@@ -1,3 +1,13 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/user_sign_in">Sign in!</a></li>
+    <li class="breadcrumb-item"><a href="/login_confirmation">My Page</a></li>
+    <li class="breadcrumb-item"><a href="/user_sign_out">Sign Out!</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= session.fetch( :user_username) %></li>
+  </ol>
+</nav>
+
 <h1>Add a course</h1>
 
 <form action="/insert_course_record">
@@ -14,6 +24,6 @@
   <input id="browser_grade" type="password" name="input_course_grade" placeholder="Use 4.0 format, e.g. 3.7">
 
 
-  <button>Add course!</button>
+  <button type="submit" class="btn btn-primary">Add course!</button>
 </form>
 
