@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     user = User.where({ :username => un}).at(0)
 
     if user == nil
-      redirect_to("/user_sign_in", { :alert => "No one by that name here"})
+      redirect_to("/user_sign_in", { :alert => "Username does not exist!"})
     else
       if user.authenticate(pw)
         session.store(:user_id, user.id)
@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
         
         redirect_to("/users/#{user.username}", {:notice => "Welcome back " + user.username + "!" })
       else
-      redirect_to("/user_sign_in", {:alert => "Nope"})
+      redirect_to("/user_sign_in", {:alert => "Incorrect login information!"})
       end
     end
   end
